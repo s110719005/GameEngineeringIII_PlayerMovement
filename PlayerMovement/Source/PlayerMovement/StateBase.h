@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class PLAYERMOVEMENT_API UStateBase : public UObject
 {
 	GENERATED_BODY()

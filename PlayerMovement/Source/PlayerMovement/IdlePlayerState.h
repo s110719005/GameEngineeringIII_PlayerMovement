@@ -16,4 +16,6 @@ class PLAYERMOVEMENT_API UIdlePlayerState : public UPlayerBaseState
 protected:
 	virtual void OnEnterState(AActor* OwnerRef) override;
 	virtual void PressJump() override;
+	virtual void PressForward() override;
+	virtual void PressBackward() override;
 };

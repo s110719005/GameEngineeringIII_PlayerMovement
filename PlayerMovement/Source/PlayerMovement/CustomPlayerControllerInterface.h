@@ -8,6 +8,8 @@
 
 // This class does not need to be modified.
 DECLARE_MULTICAST_DELEGATE(FJumpSignature);
+DECLARE_MULTICAST_DELEGATE(FForwardSignature);
+DECLARE_MULTICAST_DELEGATE(FBackwardSignature);
 UINTERFACE(MinimalAPI)
 class UCustomPlayerControllerInterface : public UInterface
 {
@@ -24,4 +26,8 @@ class PLAYERMOVEMENT_API ICustomPlayerControllerInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	virtual FJumpSignature* GetJumpDelegate() = 0;
+	virtual FForwardSignature* GetForwardDelegate() = 0;
+	virtual FBackwardSignature* GetBackwardDelegate() = 0;
+	virtual FBackwardSignature* GetBackwardReleaseDelegate() = 0;
+	virtual FBackwardSignature* GetForwardReleaseDelegate() = 0;
 };

@@ -2,11 +2,22 @@
 
 
 #include "JumpState.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 void UJumpState::OnEnterState(AActor* OwnerRef)
 {
 	Super::OnEnterState(OwnerRef);
-	GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Blue, "START JUMP");
+	if (animationMesh)
+	{
+		animationMesh->PlayAnimation(animation, false);
+		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Blue, "START JUMP");
+	}
+	if (PlayerRef)
+	{
+		PlayerRef->Jump();
+	}
+	
+	//move up
 }
 
 void UJumpState::PressJump()
@@ -18,10 +29,12 @@ void UJumpState::PressJump()
 void UJumpState::TickState()
 {
 	Super::TickState();
-	////check is moving on ground
-	//if (PlayerRef)
-	//{
-	//	PlayerRef->StateManager->SwitchStateByKey("Jump");
-
-	//}
+	////check is moving back to ground
+	if (PlayerRef)
+	{
+		if (PlayerRef->GetCharacterMovement()->IsMovingOnGround())
+		{
+			PlayerRef->StateManager->SwitchStateByKey("Idle");
+		}
+	}
 }

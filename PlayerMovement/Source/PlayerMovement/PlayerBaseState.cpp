@@ -23,6 +23,15 @@ void UPlayerBaseState::OnEnterState(AActor* OwnerRef)
 	if (PlayerController)
 	{
 		PlayerController->GetJumpDelegate()->AddUObject(this, &UPlayerBaseState::PressJump);
+		PlayerController->GetForwardDelegate()->AddUObject(this, &UPlayerBaseState::PressForward);
+		PlayerController->GetForwardReleaseDelegate()->AddUObject(this, &UPlayerBaseState::ReleaseForward);
+		PlayerController->GetBackwardDelegate()->AddUObject(this, &UPlayerBaseState::PressBackward);
+		PlayerController->GetBackwardReleaseDelegate()->AddUObject(this, &UPlayerBaseState::ReleaseBackward);
+	}
+
+	if (!animationMesh)
+	{
+		animationMesh = OwnerRef->FindComponentByClass<USkeletalMeshComponent>();
 	}
 }
 
@@ -31,9 +40,35 @@ void UPlayerBaseState::OnExitState()
 	Super::OnExitState();
 	//Remove delegate
 	PlayerController->GetJumpDelegate()->RemoveAll(this);
+	if (PlayerController)
+	{
+		PlayerController->GetJumpDelegate()->RemoveAll(this);
+		PlayerController->GetJumpDelegate()->RemoveAll(this);
+		PlayerController->GetForwardDelegate()->RemoveAll(this);
+		PlayerController->GetForwardReleaseDelegate()->RemoveAll(this);
+		PlayerController->GetBackwardDelegate()->RemoveAll(this);
+		PlayerController->GetBackwardReleaseDelegate()->RemoveAll(this);
+	}
 }
 
 void UPlayerBaseState::PressJump()
+{
+}
+
+void UPlayerBaseState::PressForward()
+{
+
+}
+
+void UPlayerBaseState::PressBackward()
+{
+}
+
+void UPlayerBaseState::ReleaseBackward()
+{
+}
+
+void UPlayerBaseState::ReleaseForward()
 {
 }
 

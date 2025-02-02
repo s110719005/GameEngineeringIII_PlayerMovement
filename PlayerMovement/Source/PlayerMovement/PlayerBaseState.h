@@ -19,10 +19,18 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	APlayerCharacter* PlayerRef = nullptr;
 
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+	UAnimSequence* animation;
+
 	ICustomPlayerControllerInterface* PlayerController = nullptr;
 	virtual void OnEnterState(AActor* OwnerRef) override;
 	virtual void OnExitState() override;
 protected:
+	USkeletalMeshComponent* animationMesh;
 	virtual void PressJump();
+	virtual void PressForward();
+	virtual void PressBackward();
+	virtual void ReleaseBackward();
+	virtual void ReleaseForward();
 	virtual void TickState() override;
 };

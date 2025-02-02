@@ -23,6 +23,7 @@ protected:
 public:	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State machine")
 	UStateManagerComponent* StateManager;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

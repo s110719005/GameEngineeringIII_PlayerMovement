@@ -20,6 +20,7 @@ public:
 	void PressBackward();
 	void ReleaseForward();
 	void ReleaseBackward();
+	void QuitGame();
 
 protected:
 	virtual void SetupInputComponent();

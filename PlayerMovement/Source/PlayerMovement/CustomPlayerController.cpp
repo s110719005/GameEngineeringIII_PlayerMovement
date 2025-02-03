@@ -48,6 +48,11 @@ void ACustomPlayerController::ReleaseBackward()
 	}
 }
 
+void ACustomPlayerController::QuitGame()
+{
+	FGenericPlatformMisc::RequestExit(true);
+}
+
 void ACustomPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
@@ -57,6 +62,7 @@ void ACustomPlayerController::SetupInputComponent()
 	InputComponent->BindAction("Forward", EInputEvent::IE_Released, this, &ACustomPlayerController::ReleaseForward);
 	InputComponent->BindAction("Backward", EInputEvent::IE_Pressed, this, &ACustomPlayerController::PressBackward);
 	InputComponent->BindAction("Backward", EInputEvent::IE_Released, this, &ACustomPlayerController::ReleaseBackward);
+	InputComponent->BindAction("Quit", EInputEvent::IE_Released, this, &ACustomPlayerController::QuitGame);
 }
 
 FJumpSignature* ACustomPlayerController::GetJumpDelegate()

@@ -6,6 +6,7 @@
 #include "StateBase.h"
 #include "PlayerCharacter.h"
 #include "CustomPlayerController.h"
+#include "Components/AudioComponent.h"
 #include "PlayerBaseState.generated.h"
 
 /**
@@ -21,12 +22,15 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
 	UAnimSequence* animation;
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+	USoundWave* soundWave;
 
 	ICustomPlayerControllerInterface* PlayerController = nullptr;
 	virtual void OnEnterState(AActor* OwnerRef) override;
 	virtual void OnExitState() override;
 protected:
 	USkeletalMeshComponent* animationMesh;
+	UAudioComponent* audioComponent;
 	virtual void PressJump();
 	virtual void PressForward();
 	virtual void PressBackward();

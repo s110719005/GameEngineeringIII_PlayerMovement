@@ -16,6 +16,12 @@ void UJumpState::OnEnterState(AActor* OwnerRef)
 	{
 		PlayerRef->Jump();
 	}
+	if (audioComponent)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Blue, "PLAY JUMP SOUND");
+		audioComponent->SetSound(soundWave);
+		audioComponent->Play();
+	}
 	
 	//move up
 }

@@ -33,6 +33,11 @@ void UPlayerBaseState::OnEnterState(AActor* OwnerRef)
 	{
 		animationMesh = OwnerRef->FindComponentByClass<USkeletalMeshComponent>();
 	}
+
+	if (!audioComponent)
+	{
+		audioComponent = OwnerRef->FindComponentByClass<UAudioComponent>();
+	}
 }
 
 void UPlayerBaseState::OnExitState()

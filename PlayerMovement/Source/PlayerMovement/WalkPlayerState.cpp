@@ -11,6 +11,12 @@ void UWalkPlayerState::OnEnterState(AActor* OwnerRef)
 	{
 		animationMesh->PlayAnimation(animation, true);
 	}
+	if (audioComponent)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Blue, "PLAY JUMP SOUND");
+		audioComponent->SetSound(soundWave);
+		audioComponent->Play();
+	}
 }
 
 void UWalkPlayerState::PressJump()

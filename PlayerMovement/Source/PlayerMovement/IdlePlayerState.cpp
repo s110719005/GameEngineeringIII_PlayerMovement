@@ -11,6 +11,10 @@ void UIdlePlayerState::OnEnterState(AActor* OwnerRef)
 	{
 		animationMesh->PlayAnimation(animation, true);
 	}
+	if (audioComponent)
+	{
+		audioComponent->Stop();
+	}
 
 }
 

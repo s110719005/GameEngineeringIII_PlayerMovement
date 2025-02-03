@@ -50,7 +50,7 @@ void ACustomPlayerController::ReleaseBackward()
 
 void ACustomPlayerController::QuitGame()
 {
-	FGenericPlatformMisc::RequestExit(true);
+	GetWorld()->GetFirstPlayerController()->ConsoleCommand("quit");
 }
 
 void ACustomPlayerController::SetupInputComponent()
